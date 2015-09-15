@@ -64,10 +64,10 @@ module RopArguments =
         |> List.map UnknownCommand
 
     let parseArgs args argInfos =
-        let required = argInfos |> List.filter (fun x -> x.required) |> List.map (fun x -> x.command)
         let definedCommands = argInfos |> List.map (fun x -> x.command)
+        let required = argInfos |> List.filter (fun x -> x.required) |> List.map (fun x -> x.command)
 
-        let createDict a b c = dict a
+        let createDict a _ _ = dict a
 
         parse args
         >>= fun parsedArgs -> 
