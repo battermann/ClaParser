@@ -8,7 +8,7 @@ open System.Text.RegularExpressions
 open ClaParser.Models
 
 module RopArguments =
-    let inList xs = fun x -> xs |> List.contains x
+    let inList xs x = xs |> List.contains x
 
     let validate x validator =
         let errs = validator x
@@ -51,6 +51,11 @@ module RopArguments =
         |> List.distinct
         |> List.map DuplicateCommand
 
+    let checkAllRequiredArgsExist requiredCmds args =
+        requiredCmds
+        |> List.filter (not << inList (args |> List.map fst))
+        |> List.map RequiredCommandMissing
+
     let checkAllArgsAreDefined validCmds args =
         args 
         |> List.map fst
@@ -58,16 +63,11 @@ module RopArguments =
         |> List.filter (not << inList validCmds)
         |> List.map UnknownCommand
 
-    let checkAllRequiredArgsExist requiredCmds args =
-        requiredCmds
-        |> List.filter (not << inList (args |> List.map fst))
-        |> List.map RequiredCommandMissing
-
     let parseArgs args argInfos =
         let required = argInfos |> List.filter (fun x -> x.required) |> List.map (fun x -> x.command)
         let definedCommands = argInfos |> List.map (fun x -> x.command)
 
-        let createDict a b c = a |> List.map (fun x -> fst x, snd x) |> dict
+        let createDict a b c = dict a
 
         parse args
         >>= fun parsedArgs -> 

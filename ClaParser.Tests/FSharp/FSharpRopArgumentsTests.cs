@@ -69,6 +69,18 @@ namespace ClaParser.Tests.FSharp
                     Check.That(v.Skip(1).First()).IsEqualTo(Tuple.Create("y", "88".Some()));
                 },
                 ifFailure: _ => Assert.Fail());
+
+            new[] { "-x1", "1", "--x2", "2", "/x3", "-x4", "4" }.Parse().Match(
+                ifSuccess: (v, _) => Check.That(v).ContainsExactly(
+                    Tuple.Create("x1", "1".Some()),
+                    Tuple.Create("x2", "2".Some()),
+                    Tuple.Create("x3", FSharpOption<string>.None),
+                    Tuple.Create("x4", "4".Some())),
+                ifFailure: _ => Assert.Fail());
+
+            new[] { "-x1", "1", "--x2", "2", "x3", "-x4", "4" }.Parse().Match(
+                ifSuccess: (v, _) => Assert.Fail("succeeded but should fail"),
+                ifFailure: errs => Check.That(errs).ContainsExactly(ClaError.NewInvalidArgument("x3")));
         }
 
         [Test]

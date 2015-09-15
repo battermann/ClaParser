@@ -77,7 +77,7 @@
 
     [<EntryPoint>]
     let Main(args) =
-        let (args, argInfos) = createArgs 50 0
+        let (args, argInfos) = createArgs 200 0
         runPerfTest 100 ropFsharp notePattern args argInfos |> ignore
         // runTest 10 3 |> ignore
         Console.ReadLine() |> ignore
