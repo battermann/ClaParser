@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaParser.CSharp", "ClaParser.CSharp\ClaParser.CSharp.csproj", "{89DA8772-FFD2-4FF4-83FD-44758B6BC784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaParser.Example", "ClaParser.Example\ClaParser.Example.csproj", "{FA776C95-A534-4308-80DD-D3F926439B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaParser.Tests", "ClaParser.Tests\ClaParser.Tests.csproj", "{F238E278-4CE4-49B7-8CB7-270E74773EC3}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClaParser.PerfromanceTests", "ClaParser.PerfromanceTests\ClaParser.PerfromanceTests.fsproj", "{DE3DCF81-AE9A-485A-BDBD-E88EA15B06C1}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClaParser.FSharp", "ClaParser.FSharp\ClaParser.FSharp.fsproj", "{531CF813-27C3-4A9E-8075-AAF236BD7485}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClaParser.Models", "ClaParser.Models\ClaParser.Models.fsproj", "{CFD49954-4499-44CB-8A1C-82E56E70CA0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89DA8772-FFD2-4FF4-83FD-44758B6BC784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DA8772-FFD2-4FF4-83FD-44758B6BC784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DA8772-FFD2-4FF4-83FD-44758B6BC784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DA8772-FFD2-4FF4-83FD-44758B6BC784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA776C95-A534-4308-80DD-D3F926439B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA776C95-A534-4308-80DD-D3F926439B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA776C95-A534-4308-80DD-D3F926439B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA776C95-A534-4308-80DD-D3F926439B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F238E278-4CE4-49B7-8CB7-270E74773EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F238E278-4CE4-49B7-8CB7-270E74773EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F238E278-4CE4-49B7-8CB7-270E74773EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F238E278-4CE4-49B7-8CB7-270E74773EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3DCF81-AE9A-485A-BDBD-E88EA15B06C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3DCF81-AE9A-485A-BDBD-E88EA15B06C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3DCF81-AE9A-485A-BDBD-E88EA15B06C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3DCF81-AE9A-485A-BDBD-E88EA15B06C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531CF813-27C3-4A9E-8075-AAF236BD7485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531CF813-27C3-4A9E-8075-AAF236BD7485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531CF813-27C3-4A9E-8075-AAF236BD7485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531CF813-27C3-4A9E-8075-AAF236BD7485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD49954-4499-44CB-8A1C-82E56E70CA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD49954-4499-44CB-8A1C-82E56E70CA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD49954-4499-44CB-8A1C-82E56E70CA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD49954-4499-44CB-8A1C-82E56E70CA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

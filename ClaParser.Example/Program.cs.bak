@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Chessie.ErrorHandling;
+using Chessie.ErrorHandling.CSharp;
+
+namespace CliBuddy.Example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var jobs = new[]
+            {
+                Job.Create("add", Add, new[] {"x", "y" }, new [] {"msg"})
+            };
+
+            var jobResult = jobs.Run(args);
+
+            var output = jobResult.Either(
+                ifSuccess: (success, _) => "Job executed successfully.",
+                ifFailure: errors => String.Join(Environment.NewLine, errors));
+
+            Console.WriteLine(output);
+        }
+
+        private static string CreateOutput(Result<Success, string> jobResult)
+        {
+            return jobResult.Either(
+                ifSuccess: (success, _) => "Job executed successfully.",
+                ifFailure: errors => String.Join(Environment.NewLine, errors));
+        }
+
+        public static Result<Success, string> Add(IReadOnlyDictionary<string, string> dict)
+        {
+            var args =
+                from x in Result<int, Exception>.Try(() => Int32.Parse(dict["x"]))
+                from y in Result<int, Exception>.Try(() => Int32.Parse(dict["y"]))
+                select new { x, y };
+
+            var msg = dict.ContainsKey("msg") ? dict["msg"] : null;
+
+            return args.Either(
+                ifSuccess: (value, _) =>
+                {
+                    Add(value.x, value.y, msg);
+                    return Result<Success, string>.Succeed(Success.Value);
+                },
+                ifFailure: list => Result<Success, string>.FailWith(list.Select(x => x.Message)));
+        }
+
+        public static void Add(int x, int y, string message = null)
+        {
+            Console.WriteLine(x + y);
+
+            if (message != null)
+                Console.WriteLine(message);
+        }
+    }
+}
