@@ -17,12 +17,12 @@ namespace ClaParser.Example
                 from dict in commandLineArguments.ParseArgs(defs)
                 from values in
                     from x in
-                        from v in (dict["x"]).ToResult(ClaError.NewValueMissing("x"))
-                        from vParsed in parseToInt.Try(v, ClaError.NewCannotParseValue("Could not parse x"))
+                        from v in dict["x"].ToResult(ClaError.NewValueMissing("x"))
+                        from vParsed in parseToInt.Try(v, ClaError.NewCannotParseValue("x"))
                         select vParsed
                     join y in
-                        from v in dict["y"].ToResult(ClaError.NewValueMissing("x"))
-                        from vParsed in parseToInt.Try(v, ClaError.NewCannotParseValue("Could not parse x"))
+                        from v in dict["y"].ToResult(ClaError.NewValueMissing("y"))
+                        from vParsed in parseToInt.Try(v, ClaError.NewCannotParseValue("y"))
                         select vParsed on 1 equals 1
                     select new { X = x, Y = y }
                 select values;
