@@ -22,7 +22,7 @@ module RopArguments =
             | true -> Command (m.Groups.["command"].Value.ToLower())
             | _ -> Value (arg.ToLower())
 
-        let (| ValueAndTail |) args =
+        let valueAndTail args =
             match args with 
             | head::tail -> 
                 match head with
@@ -38,7 +38,7 @@ module RopArguments =
                 match head with
                 | Value v -> v |> InvalidArgument |> fail
                 | Command cmd -> 
-                    let (ValueAndTail (value, tail2)) = tail
+                    let value, tail2 = valueAndTail tail
                     parseRec (ok (parsed @ [(cmd, value)])) tail2
 
         parseRec (ok []) args
