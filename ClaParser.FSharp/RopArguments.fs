@@ -8,7 +8,6 @@ open System.Text.RegularExpressions
 open ClaParser.Models
 
 module RopArguments =
-    let inList xs x = xs |> List.contains x
 
     let validate x validator =
         let errs = validator x
@@ -41,12 +40,14 @@ module RopArguments =
                     parseRec (ok (parsed @ [(cmd, value)])) tail'
 
         parseRec (ok []) args
-
+    
+    let inList xs x = xs |> List.contains x
+    
     let checkArgsContainNoDuplicates definedCmds args =
         args
         |> List.filter (fst >> inList definedCmds)
         |> List.groupBy fst
-        |> List.filter (fun (_, x) -> (List.length x) > 1)
+        |> List.filter (snd >> List.length >> fun x -> x > 1)
         |> List.map fst
         |> List.distinct
         |> List.map DuplicateCommand
