@@ -310,9 +310,11 @@ namespace ClaParser.Tests.FSharp
             new[] { "-y", "lizard", "-a", "Anton", "-z", "Zealot", "-z", "Zoo" }
                 .ParseArgs(defs)
                 .Match(
-                    ifSuccess: (dictionary, _) => Assert.Fail(),
-                    ifFailure: errs => Check.That(errs.Select(x => x.SPrintClaError()))
-                        .ContainsExactly("Duplicate command \'z\'.", "Required command \'x\' not in argument list.", "Command \'a\' not defined."));
+                    ifSuccess: (dictionary, _) => Assert.Fail("should fail but was success."),
+                    ifFailure: errs => Check.That(errs).ContainsExactly(
+                        ClaError.NewDuplicateCommand("z"), 
+                        ClaError.NewRequiredCommandMissing("x"), 
+                        ClaError.NewUnknownCommand("a")));
         }
     }
 }
