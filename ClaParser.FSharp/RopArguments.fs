@@ -35,9 +35,9 @@ module RopArguments =
             | Bad _, _ -> result
             | _, [] -> result
             | Ok (parsed,_), head::tail -> 
-                match head, tail with
-                | Value v, _ -> v |> InvalidArgument |> fail
-                | Command cmd, _ -> 
+                match head with
+                | Value v -> v |> InvalidArgument |> fail
+                | Command cmd -> 
                     let (ValueAndTail (value, tail2)) = tail
                     parseRec (ok (parsed @ [(cmd, value)])) tail2
 
